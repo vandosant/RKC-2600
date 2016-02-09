@@ -3,7 +3,7 @@
   function init() {
     var SpeechRecognition = webkitSpeechRecognition;
     var SpeechGrammarList = webkitSpeechGrammarList;
-    var grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black';
+    var grammar = '#JSGF V1.0; grammar numbers; public <number> = 1 | 2 | 3 | 4';
     var recognition = new SpeechRecognition();
     var speechRecognitionList = new SpeechGrammarList();
     speechRecognitionList.addFromString(grammar, 1);
