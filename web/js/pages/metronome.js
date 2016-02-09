@@ -15,7 +15,8 @@
 
     recognition.onresult = function (event) {
       var color = event.results[0][0].transcript;
-      console.log('Confidence: ' + event.results[0][0].confidence);
+      console.log('Result received:', color);
+      console.log('Confidence:', event.results[0][0].confidence);
     };
     recognition.onspeechstart = function (event) {
       console.log('spst')
