@@ -1,4 +1,4 @@
 node_modules
-output
+output.txt
 .DS_STORE
 secret.js
