@@ -14,22 +14,26 @@
     };
     var startTime = null;
     var eventTime = [];
+    var eventDates = [];
     var started = false;
     var eventNum = 0;
     recognition.onresult = function (event) {
+      var timeStamp = Date.now();
       var transcript = event.results[0][0].transcript;
       if (transcript === 'one') {
         startTime = event.timeStamp;
+        startDate = timeStamp;
         started = true;
       }
-      if (started && transcript == '12' || transcript == '123' || transcript == '1234') {
+      if (transcript == '12' || transcript == '123' || transcript == '1234') {
         eventNum++;
+        eventDates.push(timeStamp);
         eventTime.push(event.timeStamp);
       }
     };
     recognition.onspeechend = function(event) {
-      var totalDistance = eventTime.reduce(function(a, b) {return a + b})
-      console.log((totalDistance / eventNum) - startTime);
+      var dateDistance = eventDates.reduce(function(a, b) {return b - a}, 0)
+      console.log((60 / (dateDistance / eventDates.length)) * 1000);
     }
     recognition.onerror = function (event) {
       console.log('error', event.data)
